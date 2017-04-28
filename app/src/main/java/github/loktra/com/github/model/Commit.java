@@ -16,15 +16,7 @@ public class Commit {
         return author;
     }
 
-    public void setAuthor(Author author) {
-        this.author = author;
-    }
-
     public String getCommitMessage() {
         return commitMessage;
-    }
-
-    public void setCommitMessage(String commitMessage) {
-        this.commitMessage = commitMessage;
     }
 }

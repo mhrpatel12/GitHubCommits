@@ -26,24 +26,6 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.CommitsV
     private int rowLayout;
     private Context mContext;
 
-    public static class CommitsViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout commitsLayout;
-        TextView txtAuthorName;
-        TextView txtCommit;
-        TextView txtCommitMessage;
-        CircleImageView imgAuthorAvatar;
-
-
-        public CommitsViewHolder(View v) {
-            super(v);
-            commitsLayout = (LinearLayout) v.findViewById(R.id.commits_layout);
-            txtAuthorName = (TextView) v.findViewById(R.id.txtAuthorName);
-            txtCommit = (TextView) v.findViewById(R.id.txtCommit);
-            txtCommitMessage = (TextView) v.findViewById(R.id.txtCommitMessage);
-            imgAuthorAvatar = (CircleImageView) v.findViewById(R.id.imgAuthorAvatar);
-        }
-    }
-
     public CommitsAdapter(List<CommitsResponse> commits, int rowLayout, Context context) {
         this.commits = commits;
         this.rowLayout = rowLayout;
@@ -57,11 +39,10 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.CommitsV
         return new CommitsViewHolder(view);
     }
 
-
     @Override
     public void onBindViewHolder(CommitsViewHolder holder, final int position) {
         holder.txtAuthorName.setText(commits.get(position).getCommit().getAuthor().getName() + "");
-        //holder.txtCommit.setText(commits.get(position).);
+        holder.txtCommitDate.setText(commits.get(position).getCommit().getAuthor().getDate() + "");
         holder.txtCommitMessage.setText(commits.get(position).getCommit().getCommitMessage() + "");
         Glide.with(mContext)
                 .load(commits.get(position).getAuthorMaster().getAvatarURL() + "")
@@ -71,5 +52,23 @@ public class CommitsAdapter extends RecyclerView.Adapter<CommitsAdapter.CommitsV
     @Override
     public int getItemCount() {
         return commits.size();
+    }
+
+    public static class CommitsViewHolder extends RecyclerView.ViewHolder {
+        LinearLayout commitsLayout;
+        TextView txtAuthorName;
+        TextView txtCommitDate;
+        TextView txtCommitMessage;
+        CircleImageView imgAuthorAvatar;
+
+
+        public CommitsViewHolder(View v) {
+            super(v);
+            commitsLayout = (LinearLayout) v.findViewById(R.id.commits_layout);
+            txtAuthorName = (TextView) v.findViewById(R.id.txtAuthorName);
+            txtCommitDate = (TextView) v.findViewById(R.id.txtCommitDate);
+            txtCommitMessage = (TextView) v.findViewById(R.id.txtCommitMessage);
+            imgAuthorAvatar = (CircleImageView) v.findViewById(R.id.imgAuthorAvatar);
+        }
     }
 }

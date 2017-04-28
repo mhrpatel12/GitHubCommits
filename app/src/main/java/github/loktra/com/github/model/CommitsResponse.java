@@ -1,32 +1,33 @@
 package github.loktra.com.github.model;
 
-import com.google.gson.annotations.SerializedName;
+import android.support.annotation.NonNull;
 
-import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Mihir on 4/28/2017.
  */
 
-public class CommitsResponse {
-    @SerializedName("commit")
-    private Commit commit;
+public class CommitsResponse implements Comparable<CommitsResponse> {
     @SerializedName("author")
     public AuthorMaster authorMaster;
+    @SerializedName("commit")
+    private Commit commit;
 
     public Commit getCommit() {
         return commit;
-    }
-
-    public void setCommit(Commit commit) {
-        this.commit = commit;
     }
 
     public AuthorMaster getAuthorMaster() {
         return authorMaster;
     }
 
-    public void setAuthorMaster(AuthorMaster authorMaster) {
-        this.authorMaster = authorMaster;
+    @Override
+    public int compareTo(@NonNull CommitsResponse o) {
+        int i = authorMaster.getAuthorID().compareTo(o.getAuthorMaster().getAuthorID());
+        if (i != 0) return i;
+
+        i = commit.getAuthor().getDate().compareTo(o.getCommit().getAuthor().getDate());
+        return i;
     }
 }

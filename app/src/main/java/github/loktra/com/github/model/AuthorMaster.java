@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class AuthorMaster {
     @SerializedName("id")
-    private int authorID;
+    private String authorID;
     @SerializedName("avatar_url")
     private String avatarURL;
 
@@ -16,15 +16,7 @@ public class AuthorMaster {
         return avatarURL;
     }
 
-    public void setAvatarURL(String avatarURL) {
-        this.avatarURL = avatarURL;
-    }
-
-    public int getAuthorID() {
+    public String getAuthorID() {
         return authorID;
-    }
-
-    public void setAuthorID(int authorID) {
-        this.authorID = authorID;
     }
 }

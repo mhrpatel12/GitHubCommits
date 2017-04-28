@@ -1,12 +1,13 @@
 package github.loktra.com.github.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import github.loktra.com.github.R;
@@ -37,8 +38,9 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<CommitsResponse>>() {
             @Override
             public void onResponse(Call<List<CommitsResponse>> call, Response<List<CommitsResponse>> response) {
-                int statusCode = response.code();
                 List<CommitsResponse> commitsResponseList = new ArrayList<CommitsResponse>(response.body());
+                // Grouping
+                Collections.sort(commitsResponseList);
                 recyclerViewCommits.setAdapter(new CommitsAdapter(commitsResponseList, R.layout.list_item_commit, getApplicationContext()));
             }
 

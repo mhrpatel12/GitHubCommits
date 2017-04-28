@@ -2,6 +2,8 @@ package github.loktra.com.github.model;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 /**
  * Created by Mihir on 4/28/2017.
  */
@@ -10,11 +12,14 @@ public class Author {
     @SerializedName("name")
     private String name;
 
-    public String getName() {
-        return name;
+    @SerializedName("date")
+    private Date date;
+
+    public Date getDate() {
+        return date;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getName() {
+        return name;
     }
 }
