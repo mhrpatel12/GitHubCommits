@@ -11,3 +11,5 @@ Fetches results from the [rails/rails repository](http://github.com/rails/rails)
 Finds the most recent commits.
 
 RecyclerView that groups the recent commits by author in a custom view.
+
+Collections framework from java is used for grouping.
