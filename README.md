@@ -12,4 +12,4 @@ Finds the most recent commits.
 
 RecyclerView that groups the recent commits by author in a custom view.
 
-Collections framework from java is used for grouping.
+Collections framework from java is used for sorting data of arrayList.
